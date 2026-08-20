@@ -1,0 +1,1006 @@
+/* =====================================================
+   AOMORI PERFORMANCE
+   GLOBAL
+===================================================== */
+
+:root {
+    --black: #080808;
+    --black-soft: #111111;
+    --white: #f4f4f2;
+    --gray: #969696;
+    --gray-dark: #242424;
+    --line: rgba(255,255,255,0.12);
+
+    --font-display: "Barlow Condensed", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    --container: 1280px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    width: 100%;
+    height: 80px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    border-bottom: 1px solid transparent;
+
+    transition: 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(15px);
+    border-color: var(--line);
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 0.8;
+}
+
+.logo span {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaa;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-button {
+    padding: 13px 22px;
+    border: 1px solid rgba(255,255,255,0.3);
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: white;
+    color: black;
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.menu-button span {
+    width: 25px;
+    height: 2px;
+    background: white;
+    display: block;
+    margin: 5px 0;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8,8,8,0.96) 0%,
+            rgba(8,8,8,0.72) 40%,
+            rgba(8,8,8,0.2) 100%
+        ),
+        url("images/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: var(--container);
+    max-width: 90%;
+
+    margin: auto;
+}
+
+.eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+
+    color: #aaa;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+
+    font-size: clamp(90px, 12vw, 190px);
+    font-weight: 900;
+
+    line-height: 0.78;
+    letter-spacing: -4px;
+
+    text-transform: uppercase;
+}
+
+.hero h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.8);
+}
+
+.hero-description {
+    max-width: 430px;
+
+    margin-top: 45px;
+
+    color: #aaa;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    padding: 16px 23px;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+
+    transition: 0.3s;
+}
+
+.button-primary {
+    background: white;
+    color: black;
+}
+
+.button-primary:hover {
+    transform: translateY(-3px);
+}
+
+.button-outline {
+    border: 1px solid rgba(255,255,255,0.35);
+}
+
+.button-outline:hover {
+    background: white;
+    color: black;
+}
+
+.hero-side-text {
+    position: absolute;
+
+    right: 30px;
+    top: 50%;
+
+    transform: rotate(90deg) translateX(50%);
+
+    font-size: 9px;
+    letter-spacing: 4px;
+
+    color: #777;
+}
+
+.hero-bottom {
+    position: absolute;
+
+    left: 5%;
+    bottom: 30px;
+    right: 5%;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 8px;
+    letter-spacing: 2px;
+
+    color: #777;
+
+    z-index: 2;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro {
+    max-width: var(--container);
+    width: 90%;
+
+    margin: auto;
+    padding: 150px 0;
+}
+
+.section-label {
+    display: flex;
+    gap: 20px;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    color: #777;
+}
+
+.section-label span:first-child {
+    color: white;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+
+    gap: 100px;
+
+    margin-top: 70px;
+}
+
+.intro h2 {
+    font-family: var(--font-display);
+
+    font-size: clamp(60px, 8vw, 110px);
+    line-height: 0.8;
+
+    font-weight: 900;
+}
+
+.intro h2 span {
+    color: #555;
+}
+
+.intro-content p {
+    color: #888;
+
+    font-size: 15px;
+    line-height: 1.8;
+
+    max-width: 450px;
+
+    align-self: end;
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.products-section {
+    max-width: var(--container);
+    width: 90%;
+
+    margin: auto;
+
+    padding-bottom: 160px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 60px;
+}
+
+.section-heading > div p {
+    margin-top: 10px;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    color: #777;
+}
+
+.section-number {
+    font-family: var(--font-display);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    text-align: right;
+
+    font-family: var(--font-display);
+
+    font-size: clamp(55px, 7vw, 100px);
+    line-height: 0.8;
+
+    font-weight: 900;
+}
+
+.section-heading h2 span {
+    color: #555;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: var(--black-soft);
+}
+
+.product-image {
+    height: 650px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.product-image img {
+    transition: transform 0.8s cubic-bezier(.2,.7,.2,1);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.04);
+}
+
+.product-number {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    font-family: var(--font-display);
+    font-size: 17px;
+}
+
+.product-info {
+    padding: 30px;
+}
+
+.product-category {
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: #777;
+
+    margin-bottom: 8px;
+}
+
+.product-info h3 {
+    font-family: var(--font-display);
+
+    font-size: 48px;
+    line-height: 1;
+
+    font-weight: 800;
+}
+
+.product-description {
+    color: #777;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    margin: 25px 0;
+}
+
+.sizes {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-bottom: 25px;
+}
+
+.sizes span {
+    min-width: 42px;
+
+    padding: 9px 8px;
+
+    border: 1px solid var(--gray-dark);
+
+    text-align: center;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    color: #999;
+}
+
+.whatsapp-button {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 17px 20px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+}
+
+.whatsapp-button:hover {
+    background: white;
+    color: black;
+}
+
+
+/* =====================================================
+   LATEST
+===================================================== */
+
+.latest {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+
+    min-height: 700px;
+
+    background: #111;
+}
+
+.latest-image {
+    height: 700px;
+}
+
+.latest-content {
+    padding: 100px 10%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.latest-label {
+    margin-top: 50px;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    color: #777;
+}
+
+.latest h2 {
+    font-family: var(--font-display);
+
+    font-size: clamp(70px, 8vw, 120px);
+    line-height: 0.78;
+
+    margin-top: 20px;
+}
+
+.latest h2 span {
+    color: #555;
+}
+
+.latest-content > p:not(.latest-label) {
+    margin-top: 35px;
+
+    color: #888;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    max-width: 400px;
+}
+
+.latest-button {
+    margin-top: 35px;
+    max-width: 400px;
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery-section {
+    max-width: var(--container);
+    width: 90%;
+
+    margin: auto;
+
+    padding: 160px 0;
+}
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-auto-rows: 350px;
+
+    gap: 10px;
+}
+
+.gallery-item {
+    overflow: hidden;
+}
+
+.gallery-item img {
+    transition: 0.7s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item.large {
+    grid-row: span 2;
+}
+
+
+/* =====================================================
+   INSTAGRAM
+===================================================== */
+
+.instagram-section {
+    min-height: 600px;
+
+    display: grid;
+    place-items: center;
+
+    text-align: center;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    background:
+        radial-gradient(
+            circle at center,
+            #1d1d1d 0,
+            #080808 60%
+        );
+}
+
+.instagram-content > p {
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #777;
+}
+
+.instagram-content h2 {
+    font-family: var(--font-display);
+
+    font-size: clamp(70px, 9vw, 130px);
+    line-height: 0.78;
+
+    margin: 25px 0 45px;
+}
+
+.instagram-content h2 span {
+    color: #555;
+}
+
+.instagram-button {
+    display: inline-flex;
+    gap: 30px;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    padding: 18px 30px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+}
+
+.instagram-button:hover {
+    background: white;
+    color: black;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    max-width: var(--container);
+    width: 90%;
+
+    margin: auto;
+
+    padding: 50px 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    align-items: center;
+
+    border-top: 1px solid var(--line);
+}
+
+.footer-logo {
+    font-family: var(--font-display);
+
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.footer-logo span {
+    display: block;
+
+    font-family: var(--font-body);
+
+    font-size: 7px;
+    letter-spacing: 3px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.footer-links a,
+footer p {
+    font-size: 9px;
+    color: #777;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+footer p {
+    text-align: right;
+}
+
+
+/* =====================================================
+   FLOATING WHATSAPP
+===================================================== */
+
+.whatsapp-floating {
+    width: 58px;
+    height: 58px;
+
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 999;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: white;
+    color: black;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+    transition: 0.3s;
+}
+
+.whatsapp-floating:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-floating span {
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .nav-links,
+    .nav-button {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .nav-links.active {
+        position: absolute;
+
+        top: 80px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 30px;
+
+        background: #080808;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 25px;
+
+        border-bottom: 1px solid var(--line);
+    }
+
+    .intro-content {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 600px;
+    }
+
+    .latest {
+        grid-template-columns: 1fr;
+    }
+
+    .latest-image {
+        height: 600px;
+    }
+
+    .latest-content {
+        padding: 80px 7%;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    footer p {
+        text-align: left;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: 70px;
+        padding: 0 6%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .hero {
+        min-height: 800px;
+    }
+
+    .hero-background {
+        background-position: 65% center;
+    }
+
+    .hero-content {
+        max-width: 88%;
+    }
+
+    .hero h1 {
+        font-size: 76px;
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+
+        margin-top: 35px;
+
+        max-width: 330px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        max-width: 220px;
+    }
+
+    .button {
+        justify-content: space-between;
+    }
+
+    .hero-side-text {
+        display: none;
+    }
+
+    .hero-bottom {
+        font-size: 7px;
+    }
+
+    .hero-bottom span:nth-child(2) {
+        display: none;
+    }
+
+    .intro,
+    .gallery-section {
+        padding: 100px 0;
+    }
+
+    .intro h2 {
+        font-size: 65px;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .section-heading h2 {
+        text-align: left;
+
+        margin-top: 35px;
+
+        font-size: 65px;
+    }
+
+    .product-image {
+        height: 470px;
+    }
+
+    .product-info {
+        padding: 22px;
+    }
+
+    .product-info h3 {
+        font-size: 42px;
+    }
+
+    .latest-image {
+        height: 450px;
+    }
+
+    .latest h2 {
+        font-size: 75px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 220px;
+    }
+
+    .gallery-item.large {
+        grid-row: span 2;
+    }
+
+    .instagram-section {
+        min-height: 500px;
+    }
+
+    .instagram-content h2 {
+        font-size: 70px;
+    }
+
+    .whatsapp-floating {
+        width: 52px;
+        height: 52px;
+
+        right: 18px;
+        bottom: 18px;
+    }
+
+}
